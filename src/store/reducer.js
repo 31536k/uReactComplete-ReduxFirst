@@ -29,6 +29,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 results: state.results.concat({id: new Date(), value: state.counter}) // deep copy new array with new element concated. (do not use push. push is not a deep copy)
             }
+        case 'DELETE_RESULT':
+            console.log('---------------a')
+            const updatedArray = state.results.filter(result => result.id !== action.resultElId); // filter created deep copied new array
+            return {
+                ...state,
+                results: updatedArray
+            }
     }
     return state;
 }
