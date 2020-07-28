@@ -29,12 +29,12 @@ class Counter extends Component {
 // state from reducer. map it to props.ctr
 const mapStateToProps = state => {
     return {
-        ctr: state.ctr.counter,
-        storeResults: state.res.results
+        ctr: state.ctr.counter, // state 는 Reducer. index.js 에서 counterReducer. counterReducer.counter 를 ctr 에 mapping 
+        storeResults: state.res.results // resultReducer.results 를 storeResults에 mapping
     };
 }
 
-// props.onIncrementCounter 를 실행하면 dispatch 가 실행되도록 연결한다.
+// props.onIncrementCounter 를 실행하면 dispatch 가 실행 => actionType 를 받는 reducer 에서 코드가 실행되고 다시 mapStateToProps 에 의해서 storeResults props 값이 바뀌어서 render 가 호출된다.
 const mapDispatchToProps = dispatch => {
     return {
         onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
